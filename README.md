@@ -20,16 +20,16 @@ where $`u(x, t)`$ represents the phase variable, $`\epsilon`$ controls the inter
   - Fourier series, Gaussian Mixture Models (GMM), and piecewise linear functions.
 
 ### **Model Architecture**  
-- **Fourier Neural Operator (FNO)** extended with **conditional batch normalization**:  
-  ```math
-  \text{output} = \gamma(t) \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta(t), \quad \gamma(t), \beta(t) = \text{MLP}(t)
-  ```
+- **Fourier Neural Operator (FNO)** extended with **conditional batch normalization**:
+```math
+\text{output} = \gamma(t) \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta(t), \quad \gamma(t), \beta(t) = \text{MLP}(t)
+```
 - **All-to-All Training:** Combines all $`t`$ and $`\epsilon`$ values to learn a general solution.  
 - **Loss Function:** Weighted sum of **MSE loss**, **periodicity constraints**, and **smoothness regularization**:
 
-  ```math
-  \mathcal{L} = \| u_{\text{pred}} - u_{\text{true}} \|_2^2 + \lambda_1 \| u(x_1, t) - u(x_M, t) \|_2^2 + \lambda_2 \| \Delta_x u_{\text{pred}} \|_2^2.
-  ```
+```math
+\mathcal{L} = \| u_{\text{pred}} - u_{\text{true}} \|_2^2 + \lambda_1 \| u(x_1, t) - u(x_M, t) \|_2^2 + \lambda_2 \| \Delta_x u_{\text{pred}} \|_2^2.
+```
   with $`\lambda_1, \lambda_2 = 0.05 `$.
 
 ## Results  
